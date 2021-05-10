@@ -1,8 +1,12 @@
 package com.hatemylife.api
 
 import android.app.ProgressDialog
+import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.view.View
 import android.widget.ImageView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -27,6 +31,13 @@ class MainActivity : AppCompatActivity() {
             .load(image)
             .apply(requestOptions)
             .into(imageview)
+        imageview.setOnClickListener { v: View ->
+            Log.d("EasterEgg", "lol ok bro you really want to get rickrolled")
+            val rick = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+            val uri: Uri? = Uri.parse(rick)
+            val loldamn = Intent(Intent.ACTION_VIEW, uri)
+            startActivity(loldamn)
+        }
         recyclerView = findViewById(R.id.view)
         recyclerView.adapter = DataAdapter(dataList,this)
         recyclerView.layoutManager= LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false)

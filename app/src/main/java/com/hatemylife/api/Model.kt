@@ -7,4 +7,7 @@ data class Model(
     @Expose
     @SerializedName("full_name")
     val title: String,
+    @Expose
+    @SerializedName("html_url")
+    val url: String
 )

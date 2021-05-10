@@ -1,6 +1,8 @@
 package com.hatemylife.api
 
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,14 +22,16 @@ class DataAdapter(private var dataList: List<Model>, private val context: Contex
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val Model=dataList.get(position)
-
         holder.titleTextView.text=Model.title
+        holder.itemView.setOnClickListener() { v: View ->
+            val uri: Uri? = Uri.parse(Model.url)
+            val openURL = Intent(Intent.ACTION_VIEW, uri)
+            context.startActivity(openURL)
+        }
     }
-
 
     class ViewHolder(itemLayoutView: View) : RecyclerView.ViewHolder(itemLayoutView) {
         var titleTextView: TextView = itemLayoutView.findViewById(R.id.repo)
-
     }
 
 }
